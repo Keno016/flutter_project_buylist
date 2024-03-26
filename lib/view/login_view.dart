@@ -30,6 +30,14 @@ class _LoginViewState extends State<LoginView> {
           key: formkey,
           child: Column(
             children: [
+
+              // Adicionando imagens
+
+              Image.asset(
+                'lib/imagens/carrinho.png',
+                width: 200,
+                height: 200,
+              ),
              
               //Textfield login
  
@@ -48,13 +56,12 @@ class _LoginViewState extends State<LoginView> {
                   else if(value.isEmpty){
                     return 'Informe o login!';
                   }
-                  else if(double.tryParse(value) == null){
-                    return 'Informe um login valido!';
-                  }
- 
+                   
                   return null;
                 },
               ),
+
+              //Textfield senha
  
               SizedBox(height: 30),
               TextFormField(
@@ -85,8 +92,30 @@ class _LoginViewState extends State<LoginView> {
  
                   return null;
                 },
+              ),
+
+              // Login button
+
+              SizedBox(height: 30),
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade100,
+                  foregroundColor: Colors.green.shade900,
+                  minimumSize: Size(200, 50),
+                  shadowColor: Colors.red,
+                ),
+                onPressed: (){
+                  if(formkey.currentState!.validate()){
+                    Navigator.pushNamed(
+                      context,
+                      'main_view',
+                    );
+                  }
+                },
+                child: Text('Login'),
               )
- 
+
             ],
           )
         )
