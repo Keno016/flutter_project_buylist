@@ -56,7 +56,8 @@ class _LoginViewState extends State<LoginView> {
                   else if(value.isEmpty){
                     return 'Informe o login!';
                   }
-                   
+                  
+
                   return null;
                 },
               ),
@@ -89,7 +90,7 @@ class _LoginViewState extends State<LoginView> {
                   else if(value.isEmpty){
                     return 'Insira sua senha!';
                   }
- 
+
                   return null;
                 },
               ),
@@ -114,7 +115,32 @@ class _LoginViewState extends State<LoginView> {
                   }
                 },
                 child: Text('Login'),
+              ),
+
+              SizedBox(height: 30),
+
+              TextButton(
+                child: Text('Esqueceu a senha?'),
+                onPressed: (){
+                  Navigator.pushNamed(
+                      context,
+                      'esqueceu_senha',
+                    );
+                },
+              ),
+
+              SizedBox(height: 10),
+
+              TextButton(
+                child: Text('Cadastre-se'),
+                onPressed: (){
+                  Navigator.pushNamed(
+                    context,
+                    'cadastrar',
+                  );
+                },
               )
+
 
             ],
           )
