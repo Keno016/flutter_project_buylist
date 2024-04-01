@@ -2,6 +2,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/view/cadastrar.dart';
+import 'package:flutter_application_1/view/confirmacao.dart';
 import 'package:flutter_application_1/view/esqueceu_senha.dart';
  
 import 'view/login_view.dart';
@@ -30,6 +31,7 @@ class MainApp extends StatelessWidget {
         'main_view': (context) => MainView(),
         'esqueceu_senha': (context) => EsqueceuSenha(),
         'cadastrar': (context) => Cadastrar(),
+        'confirmar_conta': (context) => ConfirmaConta(),
       },
     );
   }

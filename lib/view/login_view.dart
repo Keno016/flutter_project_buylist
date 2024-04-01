@@ -14,7 +14,7 @@ class _LoginViewState extends State<LoginView> {
   // Chave identificador Form
   var formkey = GlobalKey<FormState>();
  
-  // Controlador dos textbox
+  // Controlador textbox
   var txtlogin = TextEditingController();
   var txtsenha = TextEditingController();
  
@@ -32,15 +32,13 @@ class _LoginViewState extends State<LoginView> {
             children: [
 
               // Adicionando imagens
-
               Image.asset(
                 'lib/imagens/carrinho.png',
                 width: 200,
                 height: 200,
               ),
              
-              //Textfield login
- 
+              // Login textfield
               TextFormField(
                 controller: txtlogin,
                 style: TextStyle(fontSize: 18),
@@ -55,16 +53,15 @@ class _LoginViewState extends State<LoginView> {
                   }
                   else if(value.isEmpty){
                     return 'Informe o login!';
-                  }
-                  
+                  }                  
 
                   return null;
                 },
               ),
 
-              //Textfield senha
- 
               SizedBox(height: 30),
+
+              // Senha textfield
               TextFormField(
                 controller: txtsenha,
                 style: TextStyle(fontSize: 18),
@@ -90,15 +87,13 @@ class _LoginViewState extends State<LoginView> {
                   else if(value.isEmpty){
                     return 'Insira sua senha!';
                   }
-
                   return null;
                 },
               ),
 
-              // Login button
-
               SizedBox(height: 30),
 
+              // Login button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.shade100,
@@ -114,18 +109,20 @@ class _LoginViewState extends State<LoginView> {
                     );
                   }
                 },
+                
                 child: Text('Login'),
               ),
 
               SizedBox(height: 30),
 
+              // Botões adicionais
               TextButton(
                 child: Text('Esqueceu a senha?'),
                 onPressed: (){
                   Navigator.pushNamed(
-                      context,
-                      'esqueceu_senha',
-                    );
+                    context,
+                    'esqueceu_senha',
+                  );
                 },
               ),
 
