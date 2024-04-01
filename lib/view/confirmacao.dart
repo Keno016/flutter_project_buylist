@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class ConfirmaConta extends StatefulWidget {
+  const ConfirmaConta({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<ConfirmaConta> createState() => _ConfirmaContaState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _ConfirmaContaState extends State<ConfirmaConta> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
