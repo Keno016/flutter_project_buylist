@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Cadastrar extends StatefulWidget {
   const Cadastrar({super.key});
@@ -48,8 +47,7 @@ class _CadastrarState extends State<Cadastrar> {
                 style: TextStyle(fontSize: 18),
                 decoration: InputDecoration(
                   labelText: 'Usuário',
-                  prefixIcon
-                  : Icon(Icons.account_circle),
+                  prefixIcon: Icon(Icons.account_circle),
                 ),
 
                 validator: (value){
