@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/view/cadastrar.dart';
 import 'package:flutter_application_1/view/confirmacao.dart';
 import 'package:flutter_application_1/view/esqueceu_senha.dart';
+import 'package:flutter_application_1/view/troca_senha.dart';
  
 import 'view/login_view.dart';
 import 'view/main_view.dart';
@@ -32,6 +33,7 @@ class MainApp extends StatelessWidget {
         'esqueceu_senha': (context) => EsqueceuSenha(),
         'cadastrar': (context) => Cadastrar(),
         'confirmar_conta': (context) => ConfirmaConta(),
+        'troca_senha': (context) => TrocaSenha(),
       },
     );
   }

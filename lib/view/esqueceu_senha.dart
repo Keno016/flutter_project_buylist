@@ -14,9 +14,6 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
   var formkey = GlobalKey<FormState>();
 
   var txtemail = TextEditingController();
-  var txtnovasenha = TextEditingController();
-
-  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +72,10 @@ class _EsqueceuSenhaState extends State<EsqueceuSenha> {
 
                 onPressed: (){
                   if(formkey.currentState!.validate()){
-                  
+                    Navigator.pushNamed(
+                      context,
+                      'troca_senha',
+                    );
                   }
                 },
                 
