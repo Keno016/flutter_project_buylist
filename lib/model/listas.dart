@@ -1,4 +1,4 @@
-class ListaCompra{
+class ListaCompra {
 
   final String nome;
 

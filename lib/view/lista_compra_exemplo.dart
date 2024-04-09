@@ -1,29 +1,25 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_unnecessary_containers, override_on_non_overriding_member
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:js_util';
 
 import 'package:flutter/material.dart';
-import '../model/listas.dart';
- 
-class MainView extends StatefulWidget {
-  const MainView({super.key});
- 
+import 'package:flutter_application_1/model/inside_list.dart';
+
+class ListaExemplo extends StatefulWidget {
+  const ListaExemplo({super.key});
+
   @override
-  State<MainView> createState() => _MainViewState();
+  State<ListaExemplo> createState() => _ListaExemploState();
 }
- 
-class _MainViewState extends State<MainView> {
- 
+
+class _ListaExemploState extends State<ListaExemplo> {
+
   var formkey = GlobalKey<FormState>();
 
-  var txtlista = TextEditingController();
+  var txtitem = TextEditingController();
+ 
+  List<ListInside> dados = [];
 
-  List<ListaCompra> dados = [];
-
-  @override
-  void initstate(){
-    dados = ListaCompra.preencher();
-    super.initState();
-  }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +42,9 @@ class _MainViewState extends State<MainView> {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                leading: Icon(Icons.shopping_bag),
+                leading: Icon(Icons.fastfood_outlined),
 
-                title: Text(dados[index].nome),
+                title: Text(dados[index].item),
 
                 onTap: (){
                   Navigator.pushNamed(
@@ -68,7 +64,7 @@ class _MainViewState extends State<MainView> {
           }
         ),
       ),
-        // floating action button needs to be in the Scaffold widget
+
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.blue.shade100,
@@ -77,20 +73,20 @@ class _MainViewState extends State<MainView> {
             showDialog(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-	              title: const Text('Criar lista'),
+	              title: const Text('Adicionar item'),
                 content: TextFormField(
-                  controller: txtlista,
+                  controller: txtitem,
                   style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(
-                    labelText: 'Nome da lista'
+                    labelText: 'Nome do item'
                   ),
                 
                   validator: (value){
                     if(value == null){
-                      return 'Insira o nome da lista';
+                      return 'Insira o nome do item';
                     }
                     else if(value.isEmpty){
-                      return 'Insira o nome da lista';
+                      return 'Insira o nome do item';
                     }
                     return null;
                   },
@@ -106,59 +102,18 @@ class _MainViewState extends State<MainView> {
                       if(formkey.currentState!.validate()){
                         Navigator.pop(
                           context,
-                          'Criar'
+                          'Adicionar'
                         );
                       }
                     },
-                    child: const Text('Criar'),
+                    child: const Text('Adicionar'),
                   ),
                 ],
               ),
             );
           },
         ),
-    );
+        
+      );
   }
 }
-
-
-
-
-/*
-
-      ListView.builder(
-              itemCount: dados.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-
-                    title: Text(dados[index].nome),
-
-                    onTap: (){
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(dados[index].nome))    
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-
-            TextFormField(
-                controller: txtlista,
-                style: TextStyle(fontSize: 18),
-                decoration: InputDecoration(
-                  labelText: 'Nome da lista'
-                ),
-
-                validator: (value){
-                  if(value == null){
-                    return 'Insira o nome da lista';
-                  }
-                  else if(value.isEmpty){
-                    return 'Insira o nome da lista';
-                  }
-                  return null;
-                },
-              ),
-*/
