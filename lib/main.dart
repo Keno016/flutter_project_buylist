@@ -2,7 +2,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/view/lista_compra_exemplo.dart';
-
 import 'view/cadastrar.dart';
 import 'view/confirmacao.dart';
 import 'view/esqueceu_senha.dart';

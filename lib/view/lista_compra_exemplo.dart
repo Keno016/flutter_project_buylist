@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:js_util';
+// ignore_for_file: prefer_const_constructors, overridden_fields, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/inside_list.dart';
 
 class ListaExemplo extends StatefulWidget {
-  const ListaExemplo({super.key});
+  final String? nomeLista;
+  final Key? key;
+
+  const ListaExemplo({this.nomeLista, this.key}) : super(key: key);
 
   @override
   State<ListaExemplo> createState() => _ListaExemploState();
@@ -21,47 +22,71 @@ class _ListaExemploState extends State<ListaExemplo> {
   List<ListInside> dados = [];
 
   @override
+  void initState(){
+    dados = ListInside.preencher();
+    super.initState();
+    txtitem = TextEditingController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'lib/imagens/carrinho.png',
-          width: 40,
-          height: 40,
+        leading: BackButton(
+          onPressed: (){
+            Navigator.pop(context);
+          }),
+          
+        title: Row(
+          children: [
+            Image.asset(
+              'lib/imagens/carrinho.png',
+              width: 40,
+              height: 40,
+            ),
+            SizedBox(width: 8),
+            Text(widget.nomeLista ?? ''),
+          ],
         ),
         automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-
-        child: ListView.builder(
-          // Quantidade de listas de compra
-          itemCount: dados.length,
-          
-          // Aparencia das listas
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                leading: Icon(Icons.fastfood_outlined),
-
-                title: Text(dados[index].item),
-
-                onTap: (){
-                  Navigator.pushNamed(
-                      context,
-                      'lista_exemplo',
-                    );
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: ListView.builder(
+                physics: ClampingScrollPhysics(),
+                itemCount: dados.length,
+                itemBuilder: (context, index){
+                  return Card(
+                    child: ListTile(
+                      leading: Icon(Icons.fastfood_rounded),
+                      title: Text(dados[index].item),
+                      trailing: Checkbox(
+                        value: dados[index].isChecked,
+                        onChanged: (value){
+                          setState(() {
+                            dados[index].isChecked = value!;
+                          });
+                        },
+                      ),
+                      onTap: () {
+                      },
+                      hoverColor: Colors.red.shade100,
+                      onLongPress: () {
+                        setState(() {
+                          dados.removeAt(index);
+                        });
+                      },
+                    ),
+                  );
                 },
-                hoverColor: Colors.red.shade100,
-
-                onLongPress: (){
-                  setState(() {
-                    dados.removeAt(index);
-                  });
-                },
-              )
-            );
-          }
+              ),
+            ),
+          ],
         ),
       ),
 
@@ -74,22 +99,25 @@ class _ListaExemploState extends State<ListaExemplo> {
               context: context,
               builder: (BuildContext context) => AlertDialog(
 	              title: const Text('Adicionar item'),
-                content: TextFormField(
-                  controller: txtitem,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                    labelText: 'Nome do item'
+                content: Form(
+                  key: formkey,
+                  child: TextFormField(
+                    controller: txtitem,
+                    style: TextStyle(fontSize: 18),
+                    decoration: InputDecoration(
+                      labelText: 'Nome do item'
+                    ),
+                  
+                    validator: (value){
+                      if(value == null){
+                        return 'Insira o nome do item';
+                      }
+                      else if(value.isEmpty){
+                        return 'Insira o nome do item';
+                      }
+                      return null;
+                    },
                   ),
-                
-                  validator: (value){
-                    if(value == null){
-                      return 'Insira o nome do item';
-                    }
-                    else if(value.isEmpty){
-                      return 'Insira o nome do item';
-                    }
-                    return null;
-                  },
                 ),
                 actions: [
                   TextButton(
@@ -100,6 +128,9 @@ class _ListaExemploState extends State<ListaExemplo> {
                   TextButton(
                     onPressed: (){
                       if(formkey.currentState!.validate()){
+                        setState(() {
+                          dados.add(ListInside(item:txtitem.text));
+                        });
                         Navigator.pop(
                           context,
                           'Adicionar'

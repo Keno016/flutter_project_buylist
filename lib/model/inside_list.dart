@@ -1,18 +1,19 @@
 class ListInside {
-
   final String item;
+  bool isChecked;
 
-  ListInside(this.item);
+  ListInside({required this.item, this.isChecked = false});
 
   static List<ListInside> preencher() {
     List<ListInside> lista = [];
 
-    lista.add(ListInside('Banana'));
-    lista.add(ListInside('Maça'));
-    lista.add(ListInside('Laranja'));
-    lista.add(ListInside('Danone'));
-    lista.add(ListInside('Cebola'));
-    lista.add(ListInside('Alface'));
+    lista.add(ListInside(item: 'Banana'));
+    lista.add(ListInside(item: 'Maça'));
+    lista.add(ListInside(item: 'Laranja'));
+    lista.add(ListInside(item: 'Danone'));
+    lista.add(ListInside(item: 'Cebola'));
+    lista.add(ListInside(item: 'Alface'));
+    lista.add(ListInside(item: 'item'));
     
     return lista;
   }
