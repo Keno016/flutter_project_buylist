@@ -52,6 +52,7 @@ class _TrocaSenhaState extends State<TrocaSenha> {
               TextFormField(
                 controller: txtnovasenha,
                 style: TextStyle(fontSize: 18),
+                obscureText: _isObscure,
                 decoration: InputDecoration(
                   labelText: 'Nova senha',
                   prefixIcon: Icon(Icons.lock),
