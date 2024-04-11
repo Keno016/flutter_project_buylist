@@ -13,8 +13,7 @@ class ListInside {
     lista.add(ListInside(item: 'Danone'));
     lista.add(ListInside(item: 'Cebola'));
     lista.add(ListInside(item: 'Alface'));
-    lista.add(ListInside(item: 'item'));
-    
+
     return lista;
   }
 }

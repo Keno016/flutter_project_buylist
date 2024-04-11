@@ -90,61 +90,60 @@ class _ListaExemploState extends State<ListaExemplo> {
         ),
       ),
 
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue.shade100,
-          child: Icon(Icons.add),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-	              title: const Text('Adicionar item'),
-                content: Form(
-                  key: formkey,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue.shade100,
+        child: Icon(Icons.add),
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+	            title: const Text('Adicionar item'),
+              content: Form(
+                key: formkey,
                   child: TextFormField(
-                    controller: txtitem,
-                    style: TextStyle(fontSize: 18),
-                    decoration: InputDecoration(
-                      labelText: 'Nome do item'
-                    ),
-                  
-                    validator: (value){
-                      if(value == null){
-                        return 'Insira o nome do item';
-                      }
-                      else if(value.isEmpty){
-                        return 'Insira o nome do item';
-                      }
-                      return null;
-                    },
+                  controller: txtitem,
+                  style: TextStyle(fontSize: 18),
+                  decoration: InputDecoration(
+                    labelText: 'Nome do item'
                   ),
+                  
+                  validator: (value){
+                    if(value == null){
+                      return 'Insira o nome do item';
+                    }
+                    else if(value.isEmpty){
+                      return 'Insira o nome do item';
+                    }
+                    return null;
+                  },
                 ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context, 'Cancelar'),
-                    child: const Text('Cancelar'),
-                  ),
-                  
-                  TextButton(
-                    onPressed: (){
-                      if(formkey.currentState!.validate()){
-                        setState(() {
-                          dados.add(ListInside(item:txtitem.text));
-                        });
-                        Navigator.pop(
-                          context,
-                          'Adicionar'
-                        );
-                      }
-                    },
-                    child: const Text('Adicionar'),
-                  ),
-                ],
               ),
-            );
-          },
-        ),
-        
-      );
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancelar'),
+                  child: const Text('Cancelar'),
+                ),
+                  
+                TextButton(
+                  onPressed: (){
+                    if(formkey.currentState!.validate()){
+                      setState(() {
+                        dados.add(ListInside(item:txtitem.text));
+                      });
+                      Navigator.pop(
+                        context,
+                        'Adicionar'
+                      );
+                    }
+                  },
+                  child: const Text('Adicionar'),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
