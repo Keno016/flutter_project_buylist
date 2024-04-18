@@ -144,7 +144,7 @@ class _CadastrarState extends State<Cadastrar> {
                   else if(value.isEmpty){
                     return 'Insira sua senha!';
                   }
-                  else if(txtconfirmsenha.value != txtsenha.value){
+                  else if(txtconfirmsenha.text != txtsenha.text){
                     return 'As senhas não coincidem!';
                   }
                   return null;

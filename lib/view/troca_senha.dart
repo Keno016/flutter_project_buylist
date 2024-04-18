@@ -104,7 +104,7 @@ class _TrocaSenhaState extends State<TrocaSenha> {
                   else if(value.isEmpty){
                     return 'Insira sua nova senha!';
                   }
-                  else if(txtconfirmanovasenha.value != txtnovasenha.value){
+                  else if(txtconfirmanovasenha.text != txtnovasenha.text){
                     return 'As senhas não coincidem!';
                   }
                   return null;

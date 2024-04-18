@@ -148,7 +148,7 @@ class _MainViewState extends State<MainView> {
                   content: Text('This is a flutter project called "Buy List" that you can create lists and inside of this lists, you can add itens that you want to buy, '
                     'and you can also mark then as already bought.\nThis project was made for improve my flutter prototype knowledge.\n\n'
                     'Esse é um projeto em flutter chamado "Buy List" (Lista de compra) onde você consegue criar listas e dentro dessas listas, você consegue '
-                    'adicionar itens que você deseja comprar, e você também pode marcar os itens como já comprados.\nEsse projeto foi feito com a intenção de melhorar'
+                    'adicionar itens que você deseja comprar, e você também pode marcar os itens como já comprados.\nEsse projeto foi feito com a intenção de melhorar '
                     'o meu conhecimento sobre prototipos em flutter.\n\n'
                     'Vinícius Kenzo Hiraoka'),
                 )
